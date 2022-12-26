@@ -8,7 +8,7 @@ port = int()
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 
-def d_send():
+def udp():
     try:
         s.sendto(b'UDP packet', (ip, port))
         print("\033[32m[+]\033[0mUDP Packet sent!")
