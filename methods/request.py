@@ -14,3 +14,5 @@ def r_send():
 for i in range(byte_s):
     thread = threading.Thread(target=r_send)
     thread.start()
+
+input("\nPress any key to continue . . . ")

@@ -23,3 +23,5 @@ def tcp():
 for i in range(byte_s):
     thread = threading.Thread(target=tcp)
     thread.start()
+
+input("\nPress any key to continue . . . ")

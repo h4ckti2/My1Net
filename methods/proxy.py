@@ -15,3 +15,5 @@ response = requests.get(url, proxies=proxy)
 
 # Read the response
 html = response.text
+
+input("\nPress any key to continue . . . ")

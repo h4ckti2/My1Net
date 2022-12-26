@@ -19,3 +19,5 @@ def udp():
 for i in range(byte_s):
     thread = threading.Thread(target=udp)
     thread.start()
+
+input("\nPress any key to continue . . . ")
