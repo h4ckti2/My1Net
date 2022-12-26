@@ -63,11 +63,9 @@ def client():
                 udp_thread.start()
 
             elif data == "stop tcp":
-                tcp_thread.join()
                 tcp_s.close()
 
             elif data == "stop udp":
-                udp_thread.join()
                 udp_s.close()
 
             elif data.startswith("request"):
