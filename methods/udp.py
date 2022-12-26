@@ -17,5 +17,5 @@ def udp():
 
 
 for i in range(byte_s):
-    thread = threading.Thread(target=d_send)
+    thread = threading.Thread(target=udp)
     thread.start()
