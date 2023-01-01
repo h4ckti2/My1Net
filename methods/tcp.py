@@ -19,7 +19,7 @@ def tcp():
 
             print("\033[32m[+]\033[0m TCP Packet sent!")
 
-        except Exception as err:
+        except Exception:
             print("\033[31m[-]\033[0m Connection down")
 
 
