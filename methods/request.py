@@ -4,13 +4,12 @@ import requests
 url = input("URL: ")
 threads = int(input("Threads: "))
 
-headers = {'max-bandswitch': '2'}
-response = requests.get(url, headers=headers)
+response = requests.get(url)
 
 
 def request():
     try:
-        requests.get(url, headers=headers)
+        requests.get(url)
         print("\033[32m[+]\033[0m TCP Packet sent ->", url)
 
     except Exception as err:
