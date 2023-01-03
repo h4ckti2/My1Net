@@ -8,8 +8,8 @@
 * clear # Clear Terminal
 * miner pool:port monero_wallet worker_name # Monero CPU + GPU Mining
 * methods # Stresser menu
-* tcp ip port threads # TCP Attack
-* udp ip threads # UDP Attack
+* tcp ip port threads # TCP Attack [Do not write http(s)]
+* udp ip threads # UDP Attack [Do not write http(s)]
 * request http(s)://example.com threads # Request Attack
 * connect
 * disconnect
