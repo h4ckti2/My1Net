@@ -1,5 +1,3 @@
 # Saturn-C2
 
-* Recoding to increase the level of purity and perfection of the code
-
-![image](https://user-images.githubusercontent.com/120246386/209477918-dce6deb5-aff7-42bf-9e6d-34d69f5a836f.png)
+![image](https://user-images.githubusercontent.com/120246386/210374754-29334bd0-0bee-4483-bb7a-6ff000a2ff9f.png)
