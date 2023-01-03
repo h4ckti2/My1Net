@@ -190,6 +190,7 @@ def server():
                         server()
 
                     else:
+                        # Reverse Shell
                         for client in clients:
                             client.sendall(console.encode())
             else:
