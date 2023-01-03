@@ -11,5 +11,5 @@
 * tcp ip port threads # TCP Attack [Do not write http(s)]
 * udp ip threads # UDP Attack [Do not write http(s)]
 * request http(s)://example.com threads # Request Attack
-* connect
-* disconnect
+* connect # Exit localhost & Connect CnC
+* disconnect # Exit CnC & Connect localhost
