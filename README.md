@@ -17,3 +17,6 @@
 # Note
 If you are on localhost and you type something other than the commands in the help menu, it will run on your own machine as batch or bash. (Same thing for Remote Host)
 
+# Soon
+SSH + Telnet : Scan + Brute + Exec_Payload
+
