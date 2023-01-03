@@ -6,7 +6,6 @@ threads = int(input("Threads: "))
 
 port = int()
 
-
 s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
 
