@@ -4,6 +4,7 @@
 
 # Commands
 * help
+* bots
 * clear
 * miner <pool:port> <monero_wallet> <worker_name>
 * methods
