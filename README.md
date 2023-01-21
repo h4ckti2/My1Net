@@ -20,5 +20,7 @@ If you are on localhost and you type something other than the commands in the he
 {UDP Method does not support linux machines}
 
 # Soon
-SSH + Telnet : Scan + Brute + Exec_Payload
+SSH | Telnet : Scan + Brute + Exec_Payload
+
+Proxy Scanner + Attacker
 
