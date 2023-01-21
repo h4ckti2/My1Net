@@ -13,7 +13,7 @@ def l4_tcp():
 
         s.send(f"GET / HTTP/1.1\r\nHost: {ip}\r\n\r\n".encode())
 
-        print("\033[32m[+]\033[0m L4 TCP Packet sent ->", ip)
+        print(f"\033[32m[+]\033[0m L4 TCP Packet sent -> {ip}:{port}")
 
     except Exception as err:
         print("\033[31m[-]\033[0m", err)
