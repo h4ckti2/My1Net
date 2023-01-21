@@ -12,7 +12,7 @@
 * disconnect # Exit CnC & Connect localhost
 
 # Note
-If you are on localhost and you type something other than the commands in the help menu, it will run on your own machine as batch or bash. (Same thing for Remote Host)
+If you are on localhost and you type something other than the commands in the help menu, it will run on your own machine as batch or bash command. (Same thing for Remote Host)
 
 {UDP Method does not support linux machines}
 
