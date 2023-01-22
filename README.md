@@ -3,9 +3,7 @@
 ![image](https://user-images.githubusercontent.com/120246386/213889219-56a75d87-544d-4066-b45c-6a3ffd6573ff.png)
 
 # Credits
-github.com/rxyzqc
-
-github.com/udbnt
+github.com/rxyzqc - github.com/udbnt
 
 # Commands
 * help # Help menu
