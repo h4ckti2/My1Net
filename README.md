@@ -28,7 +28,7 @@ Add stop cmd for miner
 
 Add graphic
 
-Add layer 7
+Add & fix layer 7
 
 Make better proxy_sites.txt + Add proxy method
 
