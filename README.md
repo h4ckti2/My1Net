@@ -24,12 +24,12 @@ If you are on remotehost and you type something other than the commands in the h
 # Notes for me
 Fix thread
 
-Add layer 7
-
-Fix miner
+Add stop cmd for miner
 
 Add graphic
 
+Add layer 7
+
 Add proxy method
 
-Make a scanner. SSH | Telnet : Scan + Brute + Payload
+Make scanner. SSH | Telnet : Scan + Brute + Payload
