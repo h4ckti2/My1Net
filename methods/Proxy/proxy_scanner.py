@@ -33,6 +33,7 @@ with open("proxy_sites.txt", "r") as proxy_sites:
                             if r.status_code == 200:
                                 # Append the proxy to the file
                                 proxies_file.write(proxy + "\n")
+                                proxies_file.flush()
                                 print("\033[32m[+]\033[0m", proxy)
                         except:
                             # If the request failed, the proxy is not working
