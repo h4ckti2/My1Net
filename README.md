@@ -23,6 +23,7 @@ If you are on remotehost and you type something other than the commands in the h
 {UDP Method does not support linux machines}
 
 # Soon
+Fix layer 4, 7
 New method Proxy Scan & Attack + scan from file, internet
 
 SSH | Telnet : Scan + Brute + Exec_Payload
