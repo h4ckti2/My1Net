@@ -13,8 +13,8 @@ github.com/udbnt
 * clear # Clear Terminal
 * miner pool:port monero_wallet worker_name # Monero CPU + GPU Mining (xmrig.com/wizard)
 * methods # Stresser menu (TCP & UDP Layer 4, 7)
-* connect # Exit localhost & Connect CnC
-* disconnect # Exit CnC & Connect localhost
+* connect # Exit localhost & Connect remote
+* disconnect # Exit remote & Connect localhost
 
 # Notes
 If you are on localhost and you type something other than the commands in the help menu, it will run on your own machine as batch or bash command.
