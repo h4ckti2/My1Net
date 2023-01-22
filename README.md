@@ -16,15 +16,20 @@ github.com/udbnt
 * connect # Exit localhost & Connect CnC
 * disconnect # Exit CnC & Connect localhost
 
-# Note
+# Notes
 If you are on localhost and you type something other than the commands in the help menu, it will run on your own machine as batch or bash command.
+
 If you are on remotehost and you type something other than the commands in the help menu, it will run on bots as batch or bash command.
 
-{UDP Method does not support linux machines}
+# Notes for me
+Fix thread
 
-# Soon
-Fix layer 4, 7
+Add layer 7
 
-New method Proxy Scan & Attack + scan from file, internet
+Fix miner
 
-SSH | Telnet : Scan + Brute + Exec_Payload
+Add graphic
+
+Add proxy method
+
+Make a scanner. SSH | Telnet : Scan + Brute + Payload
