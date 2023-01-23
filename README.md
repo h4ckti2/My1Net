@@ -30,6 +30,6 @@ Add graphic
 
 Add & fix layer 7
 
-Make better proxy_sites.txt + Add proxy method
+Fix proxy_attack
 
 Make scanner. SSH | Telnet : Scan + Brute + Payload
