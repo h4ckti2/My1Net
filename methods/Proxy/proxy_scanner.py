@@ -29,9 +29,11 @@ def proxy_scan():
                                     proxy_dict = {'socks': proxy}
                                 else:
                                     proxy_dict = {'http': proxy, 'https': proxy}
+
                                 # Send a request to a test site using the proxy
                                 test_site = 'https://httpbin.org/ip'
                                 r = requests.get(test_site, proxies=proxy_dict)
+
                                 # If the request was successful, the proxy is working
                                 if r.status_code == 200:
                                     # Append the proxy to the file
