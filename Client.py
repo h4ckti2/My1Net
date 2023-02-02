@@ -1,7 +1,7 @@
-import multiprocessing
 import threading
 import requests
 import socket
+import psutil
 import random
 import time
 import sys
@@ -10,10 +10,10 @@ import os
 host = "127.0.0.1"
 port = 4444
 
-cpu = multiprocessing.cpu_count()
+cpu_count = psutil.cpu_count()
 
-if cpu >= 2:
-    thread = int(multiprocessing.cpu_count() / 2)
+if cpu_count >= 2:
+    thread = int(cpu_count / 2)
 else:
     thread = 1
 

