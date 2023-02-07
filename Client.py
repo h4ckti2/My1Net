@@ -4,6 +4,7 @@ import socket
 import psutil
 import random
 import time
+import cv2
 import sys
 import os
 
@@ -52,6 +53,14 @@ def client():
 
             if data == "ping":
                 c.sendall(b'pong')
+
+            elif data == "stat":
+                if task_exists(rig):
+                    rig_cpu_usage = psutil.cpu_percent()
+                    rig_gpu_usage = cv2.cuda.maxGpuRam()
+
+                    c.sendall(f"CPU Usage: {rig_cpu_usage}".encode())
+                    c.sendall(f"GPU Usage: {rig_gpu_usage}".encode())
 
             elif data == "miner stop":
                 if task_exists(rig):

