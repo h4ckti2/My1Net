@@ -3,7 +3,7 @@ import socket
 import random
 
 ip = socket.gethostbyname(input("IP: "))
-port = random.randint(0, 65535)
+port = 65535
 
 server_address = (ip, port)
 
