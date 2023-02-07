@@ -20,16 +20,3 @@ github.com/udbnt
 If you are on localhost and you type something other than the commands in the help menu, it will run on your own machine as batch or bash command.
 
 If you are on remotehost and you type something other than the commands in the help menu, it will run on bots as batch or bash command.
-
-# Notes for me
-Fix thread
-
-Add stop cmd for miner
-
-Add graphic
-
-Add & fix layer 7
-
-Fix proxy_attack
-
-Make scanner. SSH | Telnet : Scan + Brute + Payload
