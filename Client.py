@@ -113,7 +113,7 @@ def client():
 
                             print(f"\033[32m[+]\033[0m L4 TCP Packet sent -> {l4_tcp_ip}:{l4_tcp_port}")
 
-                        except Exception:
+                        except:
                             print("\033[31m[-]\033[0m L4 TCP Connection down!")
 
                 def l4_tcp_bg():
@@ -151,7 +151,7 @@ def client():
                             else:
                                 print(f"\033[32m[+]\033[0m L4 UDP Packet sent -> {l4_udp_ip}:{l4_udp_port}")
 
-                        except Exception:
+                        except:
                             print("\033[31m[-]\033[0m L4 UDP Connection down!")
 
                 def l4_udp_bg():
