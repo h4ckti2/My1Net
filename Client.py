@@ -147,9 +147,9 @@ def client():
                             l4_udp_socket.close()
 
                             if l4_udp_port == 0:
-                                print("\033[32m[+]\033[0m L4 UDP Packet sent \033[31m->\033[0m", l4_udp_ip)
+                                print("\033[32m[+]\033[0m L4 UDP Packet sent ->", l4_udp_ip)
                             else:
-                                print(f"\033[32m[+]\033[0m L4 UDP Packet sent \033[31m->\033[0m {l4_udp_ip}:{l4_udp_port}")
+                                print(f"\033[32m[+]\033[0m L4 UDP Packet sent -> {l4_udp_ip}:{l4_udp_port}")
 
                         except Exception:
                             print("\033[31m[-]\033[0m L4 UDP Connection down!")
