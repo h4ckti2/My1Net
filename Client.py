@@ -40,6 +40,10 @@ def task_exists(name):
         return False
 
 
+l4_tcp_flag = threading.Event()
+l4_udp_flag = threading.Event()
+
+
 def client():
     global l4_tcp_flag, l4_udp_flag
 
@@ -99,8 +103,6 @@ def client():
 
                 data = " ".join(data)
 
-                l4_tcp_flag = threading.Event()
-
                 def l4_tcp():
                     while not l4_tcp_flag.is_set():
                         try:
@@ -136,8 +138,6 @@ def client():
                 data = " ".join(data)
 
                 l4_udp_address = (l4_udp_ip, l4_udp_port)
-
-                l4_udp_flag = threading.Event()
 
                 def l4_udp():
                     while not l4_udp_flag.is_set():
