@@ -6,9 +6,9 @@
 
 
 # Credits
-github.com/rxyzqc - all
+github.com/rxyzqc - main
 
-github.com/udbnt  - fix l4 methods
+github.com/udbnt  - Upgraded l4 methods
 
 # Commands
 * help # Help menu
