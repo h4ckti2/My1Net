@@ -1,11 +1,11 @@
 # PYNet-C2
 
-![image](https://user-images.githubusercontent.com/120246386/213889219-56a75d87-544d-4066-b45c-6a3ffd6573ff.png)
+![image](https://user-images.githubusercontent.com/120246386/218177498-132126ea-61f1-4060-b9c5-c2136eb387fd.png)
 
 # Credits
-github.com/rxyzqc
+github.com/rxyzqc - all
 
-github.com/udbnt
+github.com/udbnt  - fix l4 methods
 
 # Commands
 * help # Help menu
@@ -17,7 +17,7 @@ github.com/udbnt
 * connect # Exit localhost & Connect remote
 * disconnect # Exit remote & Connect localhost
 
-# Notes
-If you are on localhost and you type something other than the commands in the help menu, it will run on your own machine as batch or bash command.
-
-If you are on remotehost and you type something other than the commands in the help menu, it will run on bots as batch or bash command.
+# Features
+* If you are on localhost and you type something other than the commands in the help menu, it will run on your own machine as batch or bash command.
+* If you are on remotehost and you type something other than the commands in the help menu, it will run on bots as batch or bash command.
+* Web-Gui (127.0.0.1:4444)
