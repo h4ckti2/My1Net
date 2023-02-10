@@ -7,7 +7,7 @@
 # Credits
 github.com/rxyzqc - Creator
 
-github.com/udbnt  - Upgraded l4 methods
+github.com/udbnt  - Upgrade l4 methods
 
 # Commands
 * help # Help menu
