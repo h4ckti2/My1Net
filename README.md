@@ -1,4 +1,4 @@
-# Saturn-C2
+# PYNet-C2
 
 ![image](https://user-images.githubusercontent.com/120246386/213889219-56a75d87-544d-4066-b45c-6a3ffd6573ff.png)
 
