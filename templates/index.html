@@ -1,0 +1,39 @@
+<html>
+  <head>
+    <title>PYNet-C2</title>
+
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+      }
+      th, td {
+        padding: 5px;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>PYNet-C2</h2>
+    <table style="width:100%">
+      <tr>
+        <th>Client Address</th>
+        <th>Host Name</th>
+        <th>CPU Name</th>
+        <th>CPU Percentage</th>
+        <th>GPU Name</th>
+        <th>GPU Percentage</th>
+      </tr>
+      {% for host_info in host_info_list %}
+        <tr>
+          <td>{{ host_info[0] }}</td>
+          <td>{{ host_info[1] }}</td>
+          <td>{{ host_info[2] }}</td>
+          <td>{{ host_info[3] }}%</td>
+          <td>{{ host_info[4] }}</td>
+          <td>{{ host_info[5] }}%</td>
+        </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

