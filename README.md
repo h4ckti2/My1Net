@@ -6,7 +6,7 @@
 
 
 # Credits
-github.com/rxyzqc - main
+github.com/rxyzqc - Creator
 
 github.com/udbnt  - Upgraded l4 methods
 
