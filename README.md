@@ -1,6 +1,6 @@
 # PYNet-C2
 
-![image](https://user-images.githubusercontent.com/120246386/218177498-132126ea-61f1-4060-b9c5-c2136eb387fd.png)
+![image](https://user-images.githubusercontent.com/120246386/218181990-55583bf7-f5fe-4989-8693-6e4242394527.png)
 
 ![image](https://user-images.githubusercontent.com/120246386/218178626-73e5ff80-7767-4a1e-bd09-2f5a0b5ce4ad.png)
 
