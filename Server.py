@@ -111,7 +111,7 @@ def get_host_info(client):
         gpu_info = GPUtil.getGPUs()[0]
         gpu_name = gpu_info.name
         gpu_percent = gpu_info.memoryUtil * 100
-    except:
+    except Exception:
         gpu_name = None
         gpu_percent = None
 
