@@ -2,7 +2,7 @@
 
 ![image](https://user-images.githubusercontent.com/120246386/218181990-55583bf7-f5fe-4989-8693-6e4242394527.png)
 
-![image](https://user-images.githubusercontent.com/120246386/218178626-73e5ff80-7767-4a1e-bd09-2f5a0b5ce4ad.png)
+![image](https://user-images.githubusercontent.com/120246386/219123387-92502873-6d0d-49be-9b63-dde286b25075.png)
 
 # Credits
 github.com/rxyzqc - Creator
