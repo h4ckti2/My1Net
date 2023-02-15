@@ -7,7 +7,7 @@
 # Credits
 github.com/rxyzqc - Creator
 
-github.com/udbnt  - Upgrade l4 methods
+github.com/udbnt  - Upgraded l4 methods
 
 # Commands
 * help # Help menu
@@ -24,4 +24,3 @@ github.com/udbnt  - Upgrade l4 methods
 * If you are on localhost and you type something other than the commands in the help menu, it will run on your own machine as batch or bash command.
 * If you are on remotehost and you type something other than the commands in the help menu, it will run on bots as batch or bash command.
 * Web-Gui (127.0.0.1:4444)
-* Methods\Proxy is not working really good
