@@ -24,3 +24,6 @@ github.com/udbnt  - Upgraded l4 methods
 * If you are on localhost and you type something other than the commands in the help menu, it will run on your own machine as batch or bash command.
 * If you are on remotehost and you type something other than the commands in the help menu, it will run on bots as batch or bash command.
 * Web-Gui (127.0.0.1:4444)
+
+# Donate
+BTC: 1NwEWW6g6x69Zw4QWGD7PmfSxL2H7QCBGN
